@@ -152,7 +152,7 @@ class TaskPaper(object):
             if level == last_level:
                 # sibling
                 last_item = TaskItem.parse(line, last_item.parent)
-            elif level > last_item:
+            elif level > last_item.level():
                 # sub-item
                 last_item = TaskItem.parse(line, last_item)
             else:
