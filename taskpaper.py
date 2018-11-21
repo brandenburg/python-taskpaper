@@ -4,7 +4,7 @@ Modified by Matt Dawson
 Copyright (c) 2009 Matt Dawson
 
 Rewritten by Bjoern Brandenburg
-Copyright (c) 2010 Bjoern Brandenburg
+Copyright (c) 2010-2018 Bjoern Brandenburg
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 """
 
-import types
 import re
 
 TAGS_PATTERN = re.compile(r'\s+@((?:\w|-)+)(?:\((.*?[^\\])\)|\(\))?')
@@ -40,7 +39,7 @@ def extract_tags(line):
 
 def indent_level(line):
     level = 0
-    for i in xrange(len(line)):
+    for i in range(len(line)):
         if line[i] != '\t':
             break
         level += 1
@@ -203,7 +202,7 @@ class TaskPaper(object):
 
     def __getitem__(self, key):
         # does it look like a string?
-        if isinstance(key, types.StringTypes):
+        if isinstance(key, (str,)):
             # filter by tags
             return self.select(lambda nd: key in nd.tags)
         else:

@@ -83,7 +83,7 @@ class TagHandling(unittest.TestCase):
     def test_find_all_tags(self):
         "Find all tags"
         til = TaskPaper.parse(self.lines)
-        tag_count = sum(len(i.tags.keys()) for i in til)
+        tag_count = sum(len(list(i.tags.keys())) for i in til)
         self.assertEqual(6, tag_count)
 
     def test_find_desired_tags(self):
